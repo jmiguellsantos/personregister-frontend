@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Routes,
+} from 'react-router-dom';
 import PersonForm from './person-form/person-form';
+import PersonDetails from './person-details/person-details';
 import './App.css';
 
 function App() {
@@ -44,34 +51,42 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Person Register</h1>
+    <Router>
+      <div className="App">
+        <h1>Registro de Pessoas</h1>
 
-      <PersonForm fetchAllPersons={fetchAllPersons} />
+        <PersonForm fetchAllPersons={fetchAllPersons} />
 
-      <h2>Search Person by Name</h2>
-      <input
-        type="text"
-        placeholder="Enter name..."
-        onChange={(e) => searchPerson(e.target.value)}
-      />
-      {searchedPerson && (
-        <div>
-          <p>Nome: {searchedPerson.name}</p>
-          <p>Nascimento: {searchedPerson.birthDate}</p>
-        </div>
-      )}
+        <h2>Pesquisa pelo nome</h2>
+        <input
+          type="text"
+          placeholder="Enter name..."
+          onChange={(e) => searchPerson(e.target.value)}
+        />
+        {searchedPerson && (
+          <div>
+            <p>Nome: {searchedPerson.name}</p>
+            <p>Nascimento: {searchedPerson.birthDate}</p>
+          </div>
+        )}
 
-      <h2>All Persons</h2>
-      <ul>
-        {persons.map((person) => (
-          <li key={person.id}>
-            {person.name}
-            <button onClick={() => deletePerson(person.id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <h2>Registrados</h2>
+        <ul>
+          {persons.map((person) => (
+            <li key={person.id}>
+              <Link to={`/person/${person.id}`}>{person.name}</Link>
+              <button onClick={() => deletePerson(person.id)}>
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <Routes>
+        <Route path="/person/:id" element={<PersonDetails />} />
+      </Routes>
+    </Router>
   );
 }
 
