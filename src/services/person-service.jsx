@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://person-register-backend.onrender.com/person-register';
+const API_URL = 'https://person-register-backend.onrender.com/person-register';
 
 export const fetchAllPersons = async () => {
   try {
@@ -35,7 +35,7 @@ export const deletePersonById = async (id) => {
 export const fetchPersonDetailsById = async (id) => {
   try {
     const response = await axios.get(
-      `http://person-register-backend.onrender.com/person-register/details/${id}`
+      `https://person-register-backend.onrender.com/person-register/details/${id}`
     );
     return response.data;
   } catch (error) {
@@ -46,7 +46,7 @@ export const fetchPersonDetailsById = async (id) => {
 
 export const createPerson = async (personData) => {
   try {
-    await axios.post('http://person-register-backend.onrender.com/person-register', personData);
+    await axios.post('https://person-register-backend.onrender.com/person-register', personData);
   } catch (error) {
     console.error('Error creating person:', error);
     throw error;
