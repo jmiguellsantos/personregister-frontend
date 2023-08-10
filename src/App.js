@@ -34,8 +34,15 @@ function PersonList({ persons, onDeletePerson }) {
     <ul>
       {persons.map((person) => (
         <li key={person.id}>
-          <Link to={`/person/${person.id}`}>{person.name}</Link>
-          <button onClick={() => onDeletePerson(person.id)}>Delete</button>
+          <Link to={`/person/${person.id}`} style={{ color: 'white' }}>
+            {person.name}
+          </Link>
+          <button
+            onClick={() => onDeletePerson(person.id)}
+            style={{ color: 'white' }}
+          >
+            Delete
+          </button>
         </li>
       ))}
     </ul>
@@ -71,7 +78,7 @@ function App() {
   const handleDeletePerson = async (id) => {
     try {
       await deletePersonById(id);
-      loadAllPersons(); 
+      loadAllPersons();
     } catch (error) {
       console.error('Error deleting person:', error);
     }
@@ -91,8 +98,8 @@ function App() {
                 <SearchBar onSearch={searchPerson} />
                 {searchedPerson && (
                   <div>
-                    <p>Nome: {searchedPerson.name}</p>
-                    <p>Nascimento: {searchedPerson.birthDate}</p>
+                    <p style={{color: 'white'}}>Nome: {searchedPerson.name}</p>
+                    <p style={{color: 'white'}}>Nascimento: {searchedPerson.birthDate}</p>
                   </div>
                 )}
                 <h2>Registrados</h2>

@@ -26,11 +26,11 @@ function PersonDetails() {
   return (
     <div className="person-details">
       <h2>Detalhes</h2>
-      <p>Nome: {person.name}</p>
-      <p>Nascimento: {person.birthDate}</p>
-      <p>E-mail: {person.email}</p>
-      <p>Celular: {person.phoneNumber}</p>
-      <Link to="/">Clique para voltar</Link>
+      <p style={{color: 'white'}}>Nome: {person.name}</p>
+      <p style={{color: 'white'}}>Nascimento: {person.birthDate}</p>
+      <p style={{color: 'white'}}>E-mail: {person.email}</p>
+      <p style={{color: 'white'}}>Celular: {person.phoneNumber}</p>
+      <Link to="/" style={{color: 'white'}}>Clique para voltar</Link>
     </div>
   );
 }
